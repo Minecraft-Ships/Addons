@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.ships'
+version '1.2'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT'
+    compileOnly 'com.github.Minecraft-Ships:ShipsCore:Test3'
+    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
+    compileOnly 'com.github.Minecraft-Ships:ShipsForCore:master-SNAPSHOT'
+
+}
