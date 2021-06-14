@@ -1,6 +1,6 @@
 name: VaultAddon
 version: 1.2
-main: org.ships.addon.BukkitVaultAddon
+main: org.ships.addon.vault.BukkitVaultAddon
 api-version: 1.13
 depends:
   - vault
