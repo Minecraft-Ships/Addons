@@ -28,8 +28,10 @@ public class CreateListener implements EventListener {
         if (player.hasPermission("vaultaddon.ignore.create")) {
             return;
         }
-        if (!player.removeBalance(price)) {
-            AText message = AText.ofPlain(event.getVessel().getType().getDisplayName() + " costs " + price).withColour(NamedTextColours.RED);
+        try {
+            player.removeBalance(price);
+        }catch (IllegalStateException e){
+            AText message = AText.ofPlain(e.getLocalizedMessage()).withColour(NamedTextColours.RED);
             player.sendMessage(message);
             event.setCancelled(true);
         }
