@@ -1,20 +1,19 @@
 package org.ships.addon.vault;
 
-import org.core.CorePlugin;
+import org.core.platform.plugin.*;
+import org.core.platform.plugin.details.PluginVersion;
+import org.core.TranslateCore;
 import org.core.command.CommandRegister;
 import org.core.config.ConfigurationFormat;
 import org.core.config.ConfigurationStream;
-import org.core.platform.Plugin;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.util.Optional;
 
-public class VaultAddon implements Plugin
-{
+public class VaultAddon implements Plugin {
     static BukkitVaultAddon plugin;
 
     public String getPluginName() {
@@ -25,21 +24,11 @@ public class VaultAddon implements Plugin
         return "vaultaddon";
     }
 
-    public String getPluginVersion() {
-        return "1.0 SNAPSHOT";
+    public PluginVersion getPluginVersion() {
+        return new VaultAddonVersion(0, 2);
     }
 
     public void registerCommands(final CommandRegister register) {
-    }
-
-    @Override
-    public void registerPlugin() {
-
-    }
-
-    @Override
-    public void registerReady() {
-
     }
 
     public BukkitVaultAddon getLauncher() {
@@ -55,16 +44,19 @@ public class VaultAddon implements Plugin
         try {
             file.getParentFile().mkdirs();
             Files.copy(stream, file.toPath());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return Optional.empty();
         }
 
-        return Optional.of(CorePlugin.createConfigurationFile(file, ConfigurationFormat.FORMAT_YAML));
+        return Optional.of(TranslateCore.createConfigurationFile(file, ConfigurationFormat.FORMAT_YAML));
     }
 
     public static BukkitVaultAddon getInstance() {
         return VaultAddon.plugin;
+    }
+
+    public BukkitVaultAddon getPlatformLauncher() {
+        return this.getLauncher();
     }
 }
