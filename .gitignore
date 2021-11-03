@@ -3,3 +3,4 @@
 .vscode/
 Makefile
 VaultAddon/build/
+VaultAddon/bin/
