@@ -1,6 +1,7 @@
 .gradle/
 .idea/
 .vscode/
+.settings/
 Makefile
 VaultAddon/build/
 VaultAddon/bin/
