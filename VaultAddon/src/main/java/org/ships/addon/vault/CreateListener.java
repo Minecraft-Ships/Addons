@@ -25,7 +25,7 @@ public class CreateListener implements EventListener {
             return;
         }
         final LivePlayer player = (LivePlayer) entity;
-        if (player.hasPermission("vaultaddon.ignore.create")) {
+        if (player.hasPermission(BukkitVaultAddon.PERMISSION_CREATE_BYPASS)) {
             return;
         }
         try {
